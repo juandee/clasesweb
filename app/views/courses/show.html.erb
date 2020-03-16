@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @course.descripcion %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Actividades</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course.tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crear nueva actividad', new_user_course_task_path(current_user,@course) %>
+<%= link_to 'Editar información del curso', edit_user_course_path(@course) %> |
+<%= link_to 'Volver atrás', user_courses_path %>

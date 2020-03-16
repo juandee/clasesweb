@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clasesweb</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm bg-light">
+      <% if user_signed_in? %>
+        <span> <%= link_to "TTPS-Ruby", root_path %> </span>
+        <span> <%= link_to "Administrar alumnos", users_path %> </span>
+        <span> <%= link_to "Administrar docentes", users_path %> </span>
+        <span> <%= link_to "Administrar cursos", user_courses_path(current_user) %> </span>
+        <span> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </span>
+      <% else %>
+        <span align="center">Taller de tecnologias de produccion de Software - Ruby</span>
+      <% end %>
+    </nav>
+    <%= yield %>
+  </body>
+</html>
