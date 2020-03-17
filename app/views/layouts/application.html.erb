@@ -15,8 +15,14 @@
         <span> <%= link_to "TTPS-Ruby", root_path %> </span>
         <div class="container">
           <% if can? :manage, User %>
-            <span> <%= link_to "Administrar alumnos", students_users_path %> </span>
-            <span> <%= link_to "Administrar docentes", teachers_users_path %> </span>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Administrar Usuarios </button> 
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item"><%= link_to "Administrar alumnos", students_users_path %></a>
+                  <a class="dropdown-item"><%= link_to "Administrar docentes", teachers_users_path %></a>
+                  <a class="dropdown-item"><%= link_to "Ver todos los usuarios", users_path %></a>
+                </div>
+              </div>
           <% end %>
           <% if can? :manage, Course %>
             <span> <%= link_to "Administrar cursos", user_courses_path(current_user) %> </span>
@@ -25,7 +31,7 @@
         </div>
       <% else %>
         <div align="center">
-          <h2>Taller de tecnologias de produccion de Software - Ruby</h2>
+          <h2 align="center">Taller de tecnologias de produccion de Software - Ruby</h2>
         </div>
       <% end %>
     </nav>

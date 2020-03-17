@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   	collection do
   		get :teachers
   	end
-	resources :courses do
+	  resources :courses do
   		resources :tasks
   	end
   end
