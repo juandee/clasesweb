@@ -3,9 +3,18 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-
   def index
     @users = User.all_except(current_user)
+  end
+
+  def students
+    @users = User.all_except(current_user).select { |u| u.has_role?(:student) } 
+    render "users/index"
+  end
+
+  def teachers
+    @users = User.all_except(current_user).select { |u| u.has_role?(:teacher)}
+    render "users/index"
   end
 
   # GET /students

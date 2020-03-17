@@ -1,22 +1,23 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>Surname:</strong>
+  <strong>Apellido:</strong>
   <%= @user.surname %>
 </p>
 
 <p>
-  <strong>Dni:</strong>
+  <strong>DNI:</strong>
   <%= @user.dni %>
 </p>
 
 <p>
-  <strong>Birthday:</strong>
+  <strong>Fecha de nacimiento:</strong>
   <%= @user.birthday %>
 </p>
 
@@ -29,5 +30,9 @@
  	</ul>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Editar', edit_user_path(@user) %> |
+<% if @user.has_role?(:teacher) %>
+	<%= link_to 'Atras', teachers_users_path %>
+<% elsif @user.has_role?(:student) %>
+	<%= link_to 'Ir al listado de alumnos', students_users_path %>
+<% end %>

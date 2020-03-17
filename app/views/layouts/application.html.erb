@@ -10,15 +10,23 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm bg-light">
+    <nav class="navbar navbar-dark bg-dark">
       <% if user_signed_in? %>
         <span> <%= link_to "TTPS-Ruby", root_path %> </span>
-        <span> <%= link_to "Administrar alumnos", users_path %> </span>
-        <span> <%= link_to "Administrar docentes", users_path %> </span>
-        <span> <%= link_to "Administrar cursos", user_courses_path(current_user) %> </span>
-        <span> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </span>
+        <div class="container">
+          <% if can? :manage, User %>
+            <span> <%= link_to "Administrar alumnos", students_users_path %> </span>
+            <span> <%= link_to "Administrar docentes", teachers_users_path %> </span>
+          <% end %>
+          <% if can? :manage, Course %>
+            <span> <%= link_to "Administrar cursos", user_courses_path(current_user) %> </span>
+          <% end %>
+          <span> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </span>
+        </div>
       <% else %>
-        <span align="center">Taller de tecnologias de produccion de Software - Ruby</span>
+        <div align="center">
+          <h2>Taller de tecnologias de produccion de Software - Ruby</h2>
+        </div>
       <% end %>
     </nav>
     <%= yield %>

@@ -1,5 +1,9 @@
-<h1>New User</h1>
+<h1>Nuevo Usuario</h1>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Back', users_path %>
+<% if @user.has_role?(:teacher) %>
+	<%= link_to 'Atras', teachers_users_path %>
+<% elsif @user.has_role?(:student) %>
+	<%= link_to 'Atras', students_users_path %>
+<% end %>

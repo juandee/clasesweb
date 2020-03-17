@@ -1,6 +1,10 @@
-<h1>Editing User</h1>
+<h1>Editar Usuario</h1>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Mostrar', @user %> |
+<% if @user.has_role?(:teacher) %>
+	<%= link_to 'Atras', teachers_users_path %>
+<% elsif @user.has_role?(:student) %>
+	<%= link_to 'Ir al listado de alumnos', students_users_path %>
+<% end %>
