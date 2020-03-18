@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_course
+  before_action :set_user
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   # GET /tasks
@@ -25,10 +27,12 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.course_id = @course.id
+    @task.user_id = @user.id
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to user_course_task_path(@user,@course,@task), notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -56,7 +60,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to user_course_tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,11 +71,14 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
     def set_user
-      @user = current_user
+      @user = User.find(params[:user_id])
+    end
+    def set_course
+      @course = Course.find(params[:course_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:titulo, :descripcion)
+      params.require(:task).permit(:titulo, :descripcion, :course_id, :user_id)
     end
 end

@@ -8,7 +8,7 @@
       <th>Titulo</th>
       <th>Descripcion</th>
       <th colspan="3"></th>
-    </tr>
+    </tr>     
   </thead>
 
   <tbody>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= task.titulo %></td>
         <td><%= task.descripcion %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_course_task_path(@user,@course,task) %></td>
+        <td><%= link_to 'Edit', edit_user_course_task_path(@user,@course,task) %></td>
+        <td><%= link_to 'Destroy', user_course_task_path(@user,@course,task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_user_course_task_path %>
