@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :assignments
 	has_many :roles, :through => :assignments
   has_many :courses
+  validates :name, :surname, :dni, :birthday, presence: true
+  validates :dni, numericality: { only_integer: true }
 
 	def has_role?(role_sym)
   		roles.any? { |r| r.name.underscore.to_sym == role_sym }
