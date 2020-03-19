@@ -32,6 +32,16 @@
     <%= form.date_select :birthday %>
   </div>
 
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+
   <% for role in Role.all %>
     <div>
       <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>

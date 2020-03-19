@@ -6,5 +6,22 @@
   <h3><u><strong>OBJETIVOS DE LA ACTIVIDAD:</u></strong> <%= @task.descripcion %> </h3> 
 </p>
 
+<% if @task.video.attached? %>
+	<div class="container" align="center">
+  		<%= video_tag(url_for(@task.video), style: "width:600;height:400", :controls => true) %>
+	</div>
+<% end %>
+
+<br>
+
+<% if @task.documents.attached? %>
+	<div class="container">
+		<h4> Actividades para descargar </h4>
+		<% @task.documents.each do |document| %>
+    		<li class="list-group-item list-group-item-primary"> <%= document.blob.filename %> </li>
+  		<% end %>
+	</div>
+<% end %>
+
 <%= link_to 'Editar', edit_user_course_task_path(@user,@course,@task) %> |
 <%= link_to 'Volver al curso', user_course_path(current_user,@course) %>

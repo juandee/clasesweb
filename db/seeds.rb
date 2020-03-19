@@ -10,9 +10,9 @@ rolTeacher = Role.create(name: 'teacher')
 rolStudent = Role.create(name: 'student')
 
 # usuario administrador
-admin = User.create(email: 'admin@admin.com', password: 'admin1234', name: 'Admin', surname: 'Admin')
+admin = User.create(email: 'admin@admin.com', password: 'admin1234', name: 'Admin', surname: 'Admin', dni:'36252171', birthday:'20/06/1990')
 assigment = Assignment.create(user_id: admin.id, role_id: rolAdmin.id)
 
 #usuario docente
-teacher1 = User.create(email: 'juan@juan.com', password: 'juan1234', name: 'Juan', surname: 'Desiderio')
+teacher1 = User.create(email: 'juan@juan.com', password: 'juan1234', name: 'Juan', surname: 'Desiderio', dni:'37353181', birthday:'24/02/1993')
 assigment = Assignment.create(user_id: teacher1.id, role_id: rolTeacher.id)
