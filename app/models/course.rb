@@ -6,4 +6,8 @@ class Course < ApplicationRecord
 	def set_owner(user)
 		self.owner = user
 	end
+
+	def set_pupils
+		self.pupils = []
+	end
 end

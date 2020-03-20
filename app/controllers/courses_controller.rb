@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :pupils]
   before_action :set_user
 
   # GET /courses
@@ -22,12 +22,20 @@ class CoursesController < ApplicationController
   def edit
   end
 
+  def pupils
+    @pupils = @course.pupils.all
+  end
+
+  def add_pupil(pupil)
+    @course.pupils.add(pupil)
+  end
+
   # POST /courses
   # POST /courses.json
   def create
     @course = @user.courses.new(course_params)
     @course.set_owner(@user)
-
+    @course.set_pupils
     respond_to do |format|
       if @course.save
         format.html { redirect_to user_course_path(@user,@course), notice: 'Course was successfully created.' }

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">ALUMNOS INSCRIPTOS</h1>
+
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="bg-info text-white" text-align="center">Nombre</th>
+      <th class="bg-info text-white">Apellido</th>
+      <th class="bg-info text-white">Fecha de nacimiento</th>
+      <th class="bg-info text-white">DNI</th>
+      <th class="bg-info text-white">Email</th>
+      <th class="bg-info text-white">Rol</th>
+      <th class="bg-info text-white">Mas informacion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pupils.each do |pupil| %>
+      <tr>
+        <td><%= pupil.name %></td>
+        <td><%= pupil.surname %></td>
+        <td><%= pupil.birthday %></td>
+        <td><%= pupil.dni %></td>
+        <td><%= pupil.email %></td>
+        <td><%= link_to 'Ver detalle', pupil %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div align="center"><%= link_to 'Ver todos los alumnos registrados', students_users_path %> </div>
