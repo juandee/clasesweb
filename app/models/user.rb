@@ -16,5 +16,18 @@ class User < ApplicationRecord
 	def self.all_except(user)
       where.not(id: user)
   	end
+
+  def self.search(search)
+    if search && search != ''
+      users = User.where(name: search)
+      if users 
+        self.where(name: search)
+      else
+        User.all
+      end
+    else
+      User.all
+    end
+  end
   	
 end

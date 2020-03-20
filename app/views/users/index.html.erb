@@ -2,6 +2,15 @@
 
 <h1 align="center">TODOS LOS USUARIOS REGISTRADOS</h1>
 <br>
+<div class="search-container">
+  <%= form_tag(users_path, method: :get) do %>
+    <%= label_tag(:search, "Buscar usuario:") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Buscar") %>
+  <% end %>
+</div>
+
+<br>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -34,4 +43,4 @@
 
 <br>
 
-<div align="center"><%= link_to 'Crear nuevo usuario', new_user_path %></div>
+<%# <div align="center"><%= link_to 'Crear nuevo usuario', new_user_path </div> %>

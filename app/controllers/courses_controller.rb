@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :set_user
+
   # GET /courses
   # GET /courses.json
   def index
@@ -25,7 +26,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = @user.courses.new(course_params)
-    #@course = Course.new(course_params)
+    @course.set_owner(@user)
 
     respond_to do |format|
       if @course.save
