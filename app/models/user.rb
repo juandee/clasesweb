@@ -18,10 +18,10 @@ class User < ApplicationRecord
   	end
 
   def self.search(search)
-    if search && search != ''
-      users = User.where(name: search)
+    if search
+      users = User.where('name LIKE :search OR surname LIKE :search OR email LIKE :search OR dni LIKE :search', search: "%#{search}%")
       if users 
-        self.where(name: search)
+        self.where('name LIKE :search OR surname LIKE :search OR email LIKE :search OR dni LIKE :search', search: "%#{search}%")
       else
         User.all
       end

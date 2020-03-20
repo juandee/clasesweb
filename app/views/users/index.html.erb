@@ -10,6 +10,12 @@
   <% end %>
 </div>
 
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
 <br>
 <table class="table table-bordered">
   <thead>
@@ -43,4 +49,4 @@
 
 <br>
 
-<%# <div align="center"><%= link_to 'Crear nuevo usuario', new_user_path </div> %>
+<div align="center"><%= link_to 'Ver todos los usuarios', users_path %> </div>
