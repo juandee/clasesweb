@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   	end
 	  resources :courses do
       get :pupils
+      get :addpupils
   		resources :tasks
   	end
   end

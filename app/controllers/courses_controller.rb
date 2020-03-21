@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :pupils]
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :set_user
 
   # GET /courses
@@ -23,7 +23,23 @@ class CoursesController < ApplicationController
   end
 
   def pupils
-    @pupils = @course.pupils.all
+    @course = Course.find(params[:course_id])
+    @pupils = @course.pupils
+  end
+
+  def addpupils
+    @course = Course.find(params[:course_id])
+    all = User.all
+    all.each do |p|
+      if p.has_role?(:student)
+        @pupils.add(p)
+      end
+    end
+    if @pupils.nil?
+      flash.now[:alert] = "No hay alumnos disponibles para agregar al curso."
+    else
+      @pupils
+    end
   end
 
   def add_pupil(pupil)
@@ -35,7 +51,6 @@ class CoursesController < ApplicationController
   def create
     @course = @user.courses.new(course_params)
     @course.set_owner(@user)
-    @course.set_pupils
     respond_to do |format|
       if @course.save
         format.html { redirect_to user_course_path(@user,@course), notice: 'Course was successfully created.' }

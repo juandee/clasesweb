@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 align="center">ALUMNOS INSCRIPTOS</h1>
+<h1 align="center">ALUMNOS PARA INSCRIBIR </h1>
 
 <% flash.each do |type, msg| %>
   <div class="alert alert-info">
@@ -22,19 +22,23 @@
   </thead>
 
   <tbody>
-    <% @course.pupils.each do |pupil| %>
+    <% if !@pupils.nil? %>
+    <% @pupils.each do |pupil| %>
       <tr>
         <td><%= pupil.name %></td>
         <td><%= pupil.surname %></td>
         <td><%= pupil.birthday %></td>
         <td><%= pupil.dni %></td>
         <td><%= pupil.email %></td>
-        <td><%= link_to 'Ver detalle', pupil %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<div align="center"><%= link_to 'Agregar alumnos al curso', user_course_addpupils_path(current_user,@course) %> </div>
+<div align="center">
+  <%= link_to 'Guardar' %> |
+  <%= link_to 'Volver al curso', user_course_pupils_path(current_user,@course)%>
+</div>

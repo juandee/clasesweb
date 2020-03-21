@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :assignments
 	has_many :roles, :through => :assignments
   has_many :courses
+  has_many :attendants
+  has_many :classes, class_name: "Course", :through => :attendants 
   validates :name, :surname, :dni, :birthday, presence: true
   validates :dni, numericality: { only_integer: true }
 
