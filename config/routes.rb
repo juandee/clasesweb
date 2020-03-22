@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 	  resources :courses do
       get :pupils
       get :addpupils
+      patch :updatepupils
+      patch :deletepupils
   		resources :tasks
   	end
   end

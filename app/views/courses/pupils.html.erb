@@ -9,6 +9,8 @@
 <% end %>
 
 <br>
+
+<%= form_tag user_course_deletepupils_path, method: :patch %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -17,19 +19,19 @@
       <th class="bg-info text-white">Fecha de nacimiento</th>
       <th class="bg-info text-white">DNI</th>
       <th class="bg-info text-white">Email</th>
-      <th class="bg-info text-white">Mas informacion</th>
+      <th class="bg-info text-white">Eliminar</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @course.pupils.each do |pupil| %>
+    <% @pupils.each do |pupil| %>
       <tr>
         <td><%= pupil.name %></td>
         <td><%= pupil.surname %></td>
         <td><%= pupil.birthday %></td>
         <td><%= pupil.dni %></td>
         <td><%= pupil.email %></td>
-        <td><%= link_to 'Ver detalle', pupil %></td>
+        <td><%=check_box_tag "selected_pupils[]", pupil.id, nil %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,4 +39,9 @@
 
 <br>
 
-<div align="center"><%= link_to 'Agregar alumnos al curso', user_course_addpupils_path(current_user,@course) %> </div>
+<div align="center">
+  <%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
+    Eliminar
+  <%end%> |
+  <%= link_to 'Agregar alumnos al curso', user_course_addpupils_path(current_user,@course) %> 
+</div>

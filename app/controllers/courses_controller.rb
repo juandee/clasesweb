@@ -24,10 +24,11 @@ class CoursesController < ApplicationController
 
   def pupils
     @course = Course.find(params[:course_id])
-    if @course.pupils = []
+    @pupils = @course.pupils.sort_by { |p| p.surname }
+    if @pupils.empty?
       flash.now[:alert] = "Aún no hay alumnos inscriptos a este curso."
     else
-      @pupils = @course.pupils
+      @pupils
     end
   end
 
@@ -40,10 +41,30 @@ class CoursesController < ApplicationController
         @pupils << p
       end
     end
-    if @pupils.nil?
+    if @pupils.empty?
       flash.now[:alert] = "No hay alumnos disponibles para agregar al curso."
     else
-      @pupils
+      @pupils = @pupils.sort_by { |p| p.surname }
+    end
+  end
+
+  def updatepupils
+    @course = Course.find(params[:course_id])
+    pupils = params[:selected_pupils]
+    pupils.each do |p| @course.pupils << User.where(id: p) end
+    respond_to do |format|
+      format.html { redirect_to user_course_pupils_path(@user,@course), notice: 'Se agregaron correctamente los alumnos al curso' }
+      format.json { render :pupils, status: :ok, location: @course }
+    end
+  end
+
+  def deletepupils
+    @course = Course.find(params[:course_id])
+    pupils = params[:selected_pupils]
+    pupils.each do |p| @course.pupils.delete(p) end
+    respond_to do |format|
+      format.html { redirect_to user_course_pupils_path(@user,@course), notice: 'Se eliminaron correctamente los alumnos del curso' }
+      format.json { render :pupils, status: :ok, location: @course }
     end
   end
 

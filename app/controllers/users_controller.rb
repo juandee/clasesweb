@@ -8,12 +8,12 @@ class UsersController < ApplicationController
   end
 
   def students
-    @users = User.all_except(current_user).select { |u| u.has_role?(:student) } 
+    @users = User.all_except(current_user).select { |u| u.has_role?(:student) }.sort_by { |u| u.surname }
     render "users/students"
   end
 
   def teachers
-    @users = User.all_except(current_user).select { |u| u.has_role?(:teacher)}
+    @users = User.all_except(current_user).select { |u| u.has_role?(:teacher)}.sort_by { |u| u.surname }
     render "users/teachers"
   end
 

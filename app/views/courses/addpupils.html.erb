@@ -9,6 +9,8 @@
 <% end %>
 
 <br>
+
+<%= form_tag user_course_updatepupils_path, method: :patch %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -22,7 +24,7 @@
   </thead>
 
   <tbody>
-    <% if !@pupils.nil? %>
+    <% if !@pupils.empty? %>
     <% @pupils.each do |pupil| %>
       <tr>
         <td><%= pupil.name %></td>
@@ -30,7 +32,7 @@
         <td><%= pupil.birthday %></td>
         <td><%= pupil.dni %></td>
         <td><%= pupil.email %></td>
-        <td></td>
+        <td><%=check_box_tag "selected_pupils[]", pupil.id, nil %></td>
       </tr>
     <% end %>
     <% end %>
@@ -40,6 +42,8 @@
 <br>
 
 <div align="center">
-  <%= link_to 'Guardar' %> |
+  <%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
+    Agregar
+  <%end%> |
   <%= link_to 'Volver al curso', user_course_pupils_path(current_user,@course)%>
 </div>
