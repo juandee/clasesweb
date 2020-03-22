@@ -68,10 +68,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def add_pupil(pupil)
-    @course.pupils.add(pupil)
-  end
-
   # POST /courses
   # POST /courses.json
   def create

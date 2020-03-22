@@ -38,9 +38,9 @@
         <td><%= user.birthday %></td>
         <td><%= user.dni %></td>
         <td><%= user.email %></td>
-        <% user.roles.each do |r| %>
-          <td><%= r.name %></td>
-        <% end %>
+        <td> <% user.roles.each do |r| %>
+          <%= r.name %> <% end %>
+        </td>
         <td><%= link_to 'Ver detalle', user %> | <%= link_to 'Editar', edit_user_path(user) %> | <%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
