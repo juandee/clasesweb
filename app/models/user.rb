@@ -26,6 +26,7 @@ class User < ApplicationRecord
         self.where('name LIKE :search OR surname LIKE :search OR email LIKE :search OR dni LIKE :search', search: "%#{search}%")
       else
         User.all
+        @message = "Ningún resultado coincide con la búsqueda."
       end
     else
       User.all

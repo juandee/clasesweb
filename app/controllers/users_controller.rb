@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.search(params[:search]).all_except(current_user)
+    @users = User.search(params[:search]).all_except(current_user).sort_by { |u| u.surname }
   end
 
   def students

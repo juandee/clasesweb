@@ -2,9 +2,4 @@
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Mostrar', @user %> |
-<% if @user.has_role?(:teacher) %>
-	<%= link_to 'Atras', teachers_users_path %>
-<% elsif @user.has_role?(:student) %>
-	<%= link_to 'Ir al listado de alumnos', students_users_path %>
-<% end %>
+<div class="container" align="center"><%= link_to 'Mostrar', @user %> | <%= link_to 'Atras', teachers_users_path %></div>
