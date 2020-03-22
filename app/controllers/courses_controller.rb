@@ -24,7 +24,11 @@ class CoursesController < ApplicationController
 
   def pupils
     @course = Course.find(params[:course_id])
-    @pupils = @course.pupils
+    if @course.pupils = []
+      flash.now[:alert] = "Aún no hay alumnos inscriptos a este curso."
+    else
+      @pupils = @course.pupils
+    end
   end
 
   def addpupils
@@ -32,7 +36,7 @@ class CoursesController < ApplicationController
     all = User.all
     @pupils = []
     all.each do |p|
-      if p.has_role?(:student)
+      if p.has_role?(:student) && !@course.pupils.include?(p)
         @pupils << p
       end
     end

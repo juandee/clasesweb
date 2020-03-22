@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(version: 2020_03_21_173359) do
   end
 
   create_table "attendants", force: :cascade do |t|
-    t.integer "pupil_id"
+    t.integer "user_id"
     t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_attendants_on_course_id"
-    t.index ["pupil_id"], name: "index_attendants_on_pupil_id"
+    t.index ["user_id"], name: "index_attendants_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|

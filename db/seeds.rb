@@ -81,3 +81,37 @@ course2 = Course.create(name: 'Manualidades', descripcion: 'Curso practico de ma
 course3 = Course.create(name: 'Origami', descripcion: 'Aprenda el antiguo arte oriental de hacer figuras con papel sin salir de su casa.', owner: teacher2)
 course4 = Course.create(name: 'Historia de la computacion', descripcion: 'Apasionante historia desde los principios de la computacion hasta los avances actuales.', owner: teacher4)
 course5 = Course.create(name: 'Principios de desarrollo web', descripcion: 'Conocimientos basicos de HTML y CSS.', owner: teacher5)
+
+#Alumnos del curso 1
+attendant = Attendant.create(user_id: student1.id, course_id: course1.id)
+attendant = Attendant.create(user_id: student3.id, course_id: course1.id)
+attendant = Attendant.create(user_id: student5.id, course_id: course1.id)
+attendant = Attendant.create(user_id: student7.id, course_id: course1.id)
+attendant = Attendant.create(user_id: student9.id, course_id: course1.id)
+attendant = Attendant.create(user_id: student11.id, course_id: course1.id)
+attendant = Attendant.create(user_id: student13.id, course_id: course1.id)
+attendant = Attendant.create(user_id: student15.id, course_id: course1.id)
+
+#Alumnos del curso 2
+attendant = Attendant.create(user_id: student2.id, course_id: course2.id)
+attendant = Attendant.create(user_id: student4.id, course_id: course2.id)
+attendant = Attendant.create(user_id: student6.id, course_id: course2.id)
+attendant = Attendant.create(user_id: student8.id, course_id: course2.id)
+attendant = Attendant.create(user_id: student10.id, course_id: course2.id)
+attendant = Attendant.create(user_id: student12.id, course_id: course2.id)
+attendant = Attendant.create(user_id: student14.id, course_id: course2.id)
+
+#Alumnos del curso 3
+attendant = Attendant.create(user_id: student1.id, course_id: course3.id)
+attendant = Attendant.create(user_id: student2.id, course_id: course3.id)
+attendant = Attendant.create(user_id: student3.id, course_id: course3.id)
+attendant = Attendant.create(user_id: student4.id, course_id: course3.id)
+attendant = Attendant.create(user_id: student5.id, course_id: course3.id)
+
+#Alumnos del curso 4 
+attendant = Attendant.create(user_id: student10.id, course_id: course4.id)
+attendant = Attendant.create(user_id: student11.id, course_id: course4.id)
+attendant = Attendant.create(user_id: student12.id, course_id: course4.id)
+attendant = Attendant.create(user_id: student13.id, course_id: course4.id)
+attendant = Attendant.create(user_id: student14.id, course_id: course4.id)
+attendant = Attendant.create(user_id: student15.id, course_id: course4.id)
