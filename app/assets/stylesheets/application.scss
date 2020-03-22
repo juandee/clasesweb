@@ -12,9 +12,19 @@
  */
  
  @import "bootstrap";
- h2 {
- 	color: Tomato;
+ h1 {
+ 	color: #FF0000;
  	align: center;
+ }
+
+ .style {
+ 	width: 90%;
+ 	align: center;
+ 	margin-left: 5%;
+ }
+
+ .search {
+ 	margin-left: 5%;
  }
 
  body {

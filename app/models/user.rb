@@ -3,10 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :assignments
+  has_many :assignments, :dependent => :destroy
 	has_many :roles, :through => :assignments
-  has_many :courses
-  has_many :attendants
+  has_many :courses, :dependent => :destroy
+  has_many :attendants, :dependent => :destroy
   has_many :classes, class_name: "Course", :through => :attendants 
   validates :name, :surname, :dni, :birthday, presence: true
   validates :dni, numericality: { only_integer: true }
@@ -26,7 +26,6 @@ class User < ApplicationRecord
         self.where('name LIKE :search OR surname LIKE :search OR email LIKE :search OR dni LIKE :search', search: "%#{search}%")
       else
         User.all
-        @message = "Ningún resultado coincide con la búsqueda."
       end
     else
       User.all

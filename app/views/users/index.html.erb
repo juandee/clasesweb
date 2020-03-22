@@ -2,7 +2,7 @@
 
 <h1 align="center">TODOS LOS USUARIOS REGISTRADOS</h1>
 <br>
-<div class="search-container">
+<div class="search-container search">
   <%= form_tag(users_path, method: :get) do %>
     <%= label_tag(:search, "Buscar usuario:") %>
     <%= text_field_tag :search, params[:search] %>
@@ -17,7 +17,7 @@
 <% end %>
 
 <br>
-<table class="table table-bordered">
+<table class="table table-bordered style">
   <thead>
     <tr>
       <th class="bg-info text-white" text-align="center">Nombre</th>
