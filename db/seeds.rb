@@ -38,3 +38,46 @@ assignment = Assignment.create(user_id: student2.id, role_id: rolStudent.id)
 
 student3 = User.create(email: 'lautaro@gmail.com', password: 'lautaro1234', name: 'Lautaro', surname: 'Martinez', dni:'39486181', birthday:'13/05/1996')
 assignment = Assignment.create(user_id: student3.id, role_id: rolStudent.id)
+
+student4 = User.create(email: 'laura@gmail.com', password: 'laura1234', name: 'Laura', surname: 'Donofrio', dni:'36486251', birthday:'03/10/1999')
+assignment = Assignment.create(user_id: student4.id, role_id: rolStudent.id)
+
+student5 = User.create(email: 'raquel@gmail.com', password: 'raquel1234', name: 'Raquel', surname: 'Gomez', dni:'40486181', birthday:'23/03/1995')
+assignment = Assignment.create(user_id: student5.id, role_id: rolStudent.id)
+
+student6 = User.create(email: 'florencia@gmail.com', password: 'florencia1234', name: 'Florencia', surname: 'Paez', dni:'34256181', birthday:'27/01/1989')
+assignment = Assignment.create(user_id: student6.id, role_id: rolStudent.id)
+
+student7 = User.create(email: 'rogelio@gmail.com', password: 'rogelio1234', name: 'Rogelio', surname: 'Gonzalez', dni:'35486241', birthday:'10/11/1985')
+assignment = Assignment.create(user_id: student7.id, role_id: rolStudent.id)
+
+student8 = User.create(email: 'ludmila@gmail.com', password: 'ludmila1234', name: 'Ludmila', surname: 'Ramirez', dni:'38486223', birthday:'20/12/1988')
+assignment = Assignment.create(user_id: student8.id, role_id: rolStudent.id)
+
+student9 = User.create(email: 'mario@gmail.com', password: 'mario1234', name: 'Mario', surname: 'Sanchez', dni:'33456241', birthday:'01/06/1995')
+assignment = Assignment.create(user_id: student9.id, role_id: rolStudent.id)
+
+student10 = User.create(email: 'esteban@gmail.com', password: 'esteban1234', name: 'Esteban', surname: 'Gomez', dni:'32786241', birthday:'03/03/1999')
+assignment = Assignment.create(user_id: student10.id, role_id: rolStudent.id)
+
+student11 = User.create(email: 'camila@gmail.com', password: 'camila1234', name: 'Camila', surname: 'Acuña', dni:'38886498', birthday:'05/04/1996')
+assignment = Assignment.create(user_id: student11.id, role_id: rolStudent.id)
+
+student12 = User.create(email: 'roberto@gmail.com', password: 'roberto1234', name: 'Roberto', surname: 'Roldan', dni:'34966241', birthday:'22/07/1997')
+assignment = Assignment.create(user_id: student12.id, role_id: rolStudent.id)
+
+student13 = User.create(email: 'marta@gmail.com', password: 'marta1234', name: 'Marta', surname: 'Harf', dni:'38486255', birthday:'08/08/1999')
+assignment = Assignment.create(user_id: student13.id, role_id: rolStudent.id)
+
+student14 = User.create(email: 'lorena@gmail.com', password: 'lorena1234', name: 'Lorena', surname: 'Panza', dni:'35486120', birthday:'09/05/1996')
+assignment = Assignment.create(user_id: student14.id, role_id: rolStudent.id)
+
+student15 = User.create(email: 'mauro@gmail.com', password: 'mauro1234', name: 'Mauro', surname: 'Diez', dni:'37246241', birthday:'24/12/1993')
+assignment = Assignment.create(user_id: student15.id, role_id: rolStudent.id)
+
+#Cursos
+course1 = Course.create(name: 'Introduccion a Ruby', descripcion: 'Curso introductorio de programacion en Ruby.', owner: teacher1)
+course2 = Course.create(name: 'Manualidades', descripcion: 'Curso practico de manualidad para hacer en la casa.', owner: teacher2)
+course3 = Course.create(name: 'Origami', descripcion: 'Aprenda el antiguo arte oriental de hacer figuras con papel sin salir de su casa.', owner: teacher2)
+course4 = Course.create(name: 'Historia de la computacion', descripcion: 'Apasionante historia desde los principios de la computacion hasta los avances actuales.', owner: teacher4)
+course5 = Course.create(name: 'Principios de desarrollo web', descripcion: 'Conocimientos basicos de HTML y CSS.', owner: teacher5)

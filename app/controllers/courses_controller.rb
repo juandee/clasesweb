@@ -30,9 +30,10 @@ class CoursesController < ApplicationController
   def addpupils
     @course = Course.find(params[:course_id])
     all = User.all
+    @pupils = []
     all.each do |p|
       if p.has_role?(:student)
-        @pupils.add(p)
+        @pupils << p
       end
     end
     if @pupils.nil?
