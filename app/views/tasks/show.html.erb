@@ -58,8 +58,8 @@
     			  <% if current_user.id == @course.owner.id %>
     				<br>
     				<div class="container" align="center">
-						<p>Escribí acá la respuesta:</p>
-						<%= form_tag user_course_task_question_answerquestion_path(@user,@course,@task,q), method: :patch %>
+						<p>Escribí acá la respuesta:<%= q.id %></p>
+						<%= form_tag user_course_task_question_answerquestion_path(@user,@course,@task,q), :id => "form#{q.id}", method: :patch %>
 						<div class="field">
     						<%= text_area_tag( "answer", nil, class: 'txt') %>
   						</div>
