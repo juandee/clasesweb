@@ -23,8 +23,23 @@
  	margin-left: 5%;
  }
 
+ .txt {
+ 	width: 50%;
+ }
+
  .search {
  	margin-left: 5%;
+ }
+
+ .question {
+ 	text-color: white;
+ 	width: 50%;
+ 	height: 50;
+ 	border-style: groove;
+ 	border-left: 6px solid blue;
+ 	background-color: lightgreen;
+ 	border-radius: 15px 50px 30px 5px;
+ 	box-shadow: 10px 10px 5px grey;
  }
 
  body {

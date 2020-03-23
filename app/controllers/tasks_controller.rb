@@ -65,6 +65,20 @@ class TasksController < ApplicationController
     end
   end
 
+  def makequestion
+    @task = Task.find(params[:task_id])
+    @question = @task.questions.new
+    @question.text = params[:texto]
+    @question.task_id = @task.id
+    @question.user_id = @user.id
+    if @question.save
+      respond_to do |format|
+        format.html { redirect_to user_course_task_path(@user,@course,@task), notice: 'Ya se generó tu consulta.' }
+        format.json { render :task, status: :ok, location: @task }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task

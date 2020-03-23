@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1 align="center"><u> <%= @task.titulo %> </u></h1>
-
+<br>
 <p>
   <h3><u><strong>OBJETIVOS DE LA ACTIVIDAD:</u></strong> <%= @task.descripcion %> </h3> 
 </p>
+<br>
 
 <% if @task.video.attached? %>
 	<div class="container" align="center">
   		<%= video_tag(url_for(@task.video), style: "width:600;height:400", :controls => true) %>
 	</div>
 <% end %>
-
 <br>
 
 <% if @task.documents.attached? %>
@@ -22,6 +22,42 @@
   		<% end %>
 	</div>
 <% end %>
+<br>
 
+<div class="container">
+	<h4> Foro de preguntas: </h4>
+		<% if !@task.questions.empty? %>
+			<% @task.questions.each do |q| %>
+    			<div class="question">
+    				<p> <%= q.user.name%> consulta:</p>
+    				<p><%= q.text %></p>
+    				<div>
+    				<span><%= q.created_at %></span>
+    				<span><%= link_to 'Eliminar consulta', user_course_task_question_path(@user,@course,@task,q), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    			    </div>
+    			</div>
+    			<br>
+  			<% end %>
+  		<% else %>
+  			<div align="center"><p>Todavía no hay ninguna pregunta para esta actividad.</p></div>
+  		<% end %>
+</div>
+<br>
+
+<div class="container" align="center">
+<p>Escribí acá tu consulta:</p>
+<%= form_tag user_course_task_makequestion_path(@user,@course,@task), method: :patch %>
+	<div class="field">
+    	<%= text_area_tag( "texto", nil, class: 'txt') %>
+  	</div>
+  	<br>
+<%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
+    Enviar pregunta
+<%end%>
+</div>
+<br>
+
+<div class="container" align="center">
 <%= link_to 'Editar', edit_user_course_task_path(@user,@course,@task) %> |
 <%= link_to 'Volver al curso', user_course_path(current_user,@course) %>
+</div>
