@@ -13,7 +13,9 @@
 
 <br>
 
+<div class="container" align="center">
 <%= link_to 'Crear nueva actividad', new_user_course_task_path(current_user,@course) %> |
 <%= link_to 'Ver alumnos inscriptos', user_course_pupils_path(current_user,@course) %> |
 <%= link_to 'Editar información del curso', edit_user_course_path(@course) %> |
-<%= link_to 'Volver atrás', user_courses_path %>
+<%= link_to 'Volver atrás', :back %>
+</div>

@@ -43,5 +43,6 @@
   <%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
     Eliminar
   <%end%> |
-  <%= link_to 'Agregar alumnos al curso', user_course_addpupils_path(current_user,@course) %> 
+  <%= link_to 'Agregar alumnos al curso', user_course_addpupils_path(current_user,@course) %> |
+  <%= link_to 'Atrás', :back %>
 </div>
