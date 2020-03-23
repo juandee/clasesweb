@@ -26,6 +26,7 @@
 
 <div class="container">
 	<h4> Foro de preguntas: </h4>
+	  <div class="container">
 		<% if !@task.questions.empty? %>
 			<% @task.questions.each do |q| %>
     			<div class="question">
@@ -36,11 +37,39 @@
     				<span><%= link_to 'Eliminar consulta', user_course_task_question_path(@user,@course,@task,q), method: :delete, data: { confirm: 'Are you sure?' } %></span>
     			    </div>
     			</div>
+    			<% if !q.answer.nil? %>
+    				<div class="answer" align="left">
+    					<p> <%= q.answer.user.name %>:</p>
+    					<p><%= q.answer.text %></p>
+    					<div>
+    						<span><%= q.answer.created_at %></span>
+    						<span><%= link_to 'Eliminar respuesta', user_course_task_question_answer_path(@user,@course,@task,q,q.answer), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    			    	</div>
+    				</div>
+    				<br>
+    				<br>
+    				<br>
+    				<br>
+    			<% else %>
+    				<br>
+    				<div class="container" align="center">
+						<p>Escribí acá la respuesta:</p>
+						<%= form_tag user_course_task_question_answerquestion_path(@user,@course,@task,q), method: :patch %>
+						<div class="field">
+    						<%= text_area_tag( "text_answer", nil, class: 'txt') %>
+  						</div>
+  						<br>
+						<%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
+    						Enviar respuesta
+						<%end%>
+					</div>
+    			<% end %>
     			<br>
   			<% end %>
   		<% else %>
   			<div align="center"><p>Todavía no hay ninguna pregunta para esta actividad.</p></div>
   		<% end %>
+  	  </div>
 </div>
 <br>
 
@@ -48,7 +77,7 @@
 <p>Escribí acá tu consulta:</p>
 <%= form_tag user_course_task_makequestion_path(@user,@course,@task), method: :patch %>
 	<div class="field">
-    	<%= text_area_tag( "texto", nil, class: 'txt') %>
+    	<%= text_area_tag( "text_question", nil, class: 'txt') %>
   	</div>
   	<br>
 <%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>

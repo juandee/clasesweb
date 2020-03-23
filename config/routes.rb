@@ -13,7 +13,10 @@ Rails.application.routes.draw do
       patch :updatepupils
       patch :deletepupils
   		resources :tasks do
-        resources :questions
+        resources :questions do
+          resources :answers
+          patch :answerquestion
+        end
         patch :makequestion
       end
   	end

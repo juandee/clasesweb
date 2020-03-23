@@ -16,6 +16,21 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def answerquestion
+    @question = Question.find(params[:question_id])
+    @answer = Answer.new
+    @answer.text = params[:text_answer]
+    @answer.question_id = @question.id
+    @answer.user_id = @user.id
+    @question.answer = @answer
+    if @question.save
+      respond_to do |format|
+        format.html { redirect_to user_course_task_path(@user,@course,@task), notice: 'Se guardó tu respuesta.' }
+        format.json { render :task, status: :ok, location: @task }
+      end
+    end
+  end
+
   	private
     # Use callbacks to share common setup or constraints between actions.
     def set_question

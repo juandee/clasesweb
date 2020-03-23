@@ -32,12 +32,22 @@
  }
 
  .question {
- 	text-color: white;
  	width: 50%;
  	height: 50;
  	border-style: groove;
- 	border-left: 6px solid blue;
+ 	border-left: 6px solid darkgreen;
  	background-color: lightgreen;
+ 	border-radius: 15px 50px 30px 5px;
+ 	box-shadow: 10px 10px 5px grey;
+ }
+
+ .answer {
+ 	width: 50%;
+ 	float: right;
+ 	right: 150px;
+ 	border-style: groove;
+ 	border-right: 6px solid darkblue;
+ 	background-color: cyan;
  	border-radius: 15px 50px 30px 5px;
  	box-shadow: 10px 10px 5px grey;
  }

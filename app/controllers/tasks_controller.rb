@@ -68,7 +68,7 @@ class TasksController < ApplicationController
   def makequestion
     @task = Task.find(params[:task_id])
     @question = @task.questions.new
-    @question.text = params[:texto]
+    @question.text = params[:text_question]
     @question.task_id = @task.id
     @question.user_id = @user.id
     if @question.save
