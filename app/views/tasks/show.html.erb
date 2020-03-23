@@ -34,7 +34,9 @@
     				<p><%= q.text %></p>
     				<div>
     				<span><%= q.created_at %></span>
-    				<span><%= link_to 'Eliminar consulta', user_course_task_question_path(@user,@course,@task,q), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    				<% if current_user.id == q.user.id %>
+    					<span><%= link_to 'Eliminar consulta', user_course_task_question_path(@user,@course,@task,q), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    				<% end %>
     			    </div>
     			</div>
     			<% if !q.answer.nil? %>
@@ -43,7 +45,9 @@
     					<p><%= q.answer.text %></p>
     					<div>
     						<span><%= q.answer.created_at %></span>
-    						<span><%= link_to 'Eliminar respuesta', user_course_task_question_answer_path(@user,@course,@task,q,q.answer), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    						<% if current_user.id == q.answer.user.id %>
+    							<span><%= link_to 'Eliminar respuesta', user_course_task_question_answer_path(@user,@course,@task,q,q.answer), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    						<% end %>
     			    	</div>
     				</div>
     				<br>
@@ -51,18 +55,20 @@
     				<br>
     				<br>
     			<% else %>
+    			  <% if current_user.id == @course.owner.id %>
     				<br>
     				<div class="container" align="center">
 						<p>Escribí acá la respuesta:</p>
 						<%= form_tag user_course_task_question_answerquestion_path(@user,@course,@task,q), method: :patch %>
 						<div class="field">
-    						<%= text_area_tag( "text_answer", nil, class: 'txt') %>
+    						<%= text_area_tag( "answer", nil, class: 'txt') %>
   						</div>
   						<br>
 						<%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
     						Enviar respuesta
 						<%end%>
 					</div>
+				  <% end %>
     			<% end %>
     			<br>
   			<% end %>
@@ -73,6 +79,7 @@
 </div>
 <br>
 
+<% if !(current_user.id == @course.owner.id) %>
 <div class="container" align="center">
 <p>Escribí acá tu consulta:</p>
 <%= form_tag user_course_task_makequestion_path(@user,@course,@task), method: :patch %>
@@ -84,6 +91,7 @@
     Enviar pregunta
 <%end%>
 </div>
+<% end %>
 <br>
 
 <div class="container" align="center">

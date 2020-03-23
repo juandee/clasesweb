@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
   def answerquestion
     @question = Question.find(params[:question_id])
     @answer = Answer.new
-    @answer.text = params[:text_answer]
+    @answer.text = params[:answer]
     @answer.question_id = @question.id
     @answer.user_id = @user.id
     @question.answer = @answer
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:text)
+      params.require(:question).permit(:answer)
     end
 
 end

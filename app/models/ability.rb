@@ -8,12 +8,14 @@ class Ability
     #
     #alias_action :create, :show, :edit, :update, :destroy, to: :crud
     user ||= User.new # guest user (not logged in)
+        
         if user.present?
             if user.has_role? :admin
-                can :manage, :all
+                can :manage, User
+                can :manage, Course
             end
             if user.has_role? :teacher
-                can :manage, Course, user_id: user.id
+                can :manage, Course, owner: user  
             end
         end
     #

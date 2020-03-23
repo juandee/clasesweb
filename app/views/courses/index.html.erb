@@ -14,12 +14,14 @@
 
   <tbody>
     <% @courses.each do |course| %>
+      <% if can? :manage, course %>
       <tr>
         <td><%= course.name %></td>
         <td><%= course.descripcion %></td>
         <td><%= course.owner.name + ' ' + course.owner.surname %></td>
         <td><%= link_to 'Entrar al curso', user_course_path(@user,course) %> | <%= link_to 'Editar información del curso', edit_user_course_path(@user,course) %> | <%= link_to 'Eliminar curso', user_course_path(@user,course), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
