@@ -2,9 +2,7 @@
 
 <h1 align="center"><u> <%= @task.titulo %> </u></h1>
 <br>
-<p>
-  <h3><u><strong>DESCRIPCIÓN DE LA ACTIVIDAD:</u></strong> <%= @task.descripcion %> </h3> 
-</p>
+<p><h3><u><strong>DESCRIPCIÓN DE LA ACTIVIDAD:</strong></u> <%= @task.descripcion %></h3></p>
 <br>
 
 <% if @task.video.attached? %>
@@ -59,14 +57,13 @@
     				<br>
     				<div class="container" align="center">
 						<p>Escribí acá la respuesta:<%= q.id %></p>
-						<%= form_tag user_course_task_question_answerquestion_path(@user,@course,@task,q), :id => "form#{q.id}", method: :patch %>
-						<div class="field">
-    						<%= text_area_tag( "answer", nil, class: 'txt') %>
-  						</div>
-  						<br>
-						<%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
-    						Enviar respuesta
-						<%end%>
+						<%= form_with url: user_course_task_question_answerquestion_path(@user,@course,@task,q), id: "form#{q.id}", method: :patch do |form| %>
+						  <div class="field">
+    						<%= form.text_area(:answer) %>
+  						  </div>
+  						  <br>
+						  <%= content_tag :button, :type => :submit, class: 'btn btn-success' do %> Enviar respuesta <%end%>
+						<% end %>
 					</div>
 				  <% end %>
     			<% end %>
