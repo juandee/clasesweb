@@ -17,6 +17,11 @@
  	align: center;
  }
 
+ h2 {
+ 	color: #FF0000;
+ 	align: center;
+ }
+
  .style {
  	width: 90%;
  	align: center;
@@ -54,4 +59,17 @@
 
  body {
   background-color: lightblue;
+}
+
+.form-style {
+	background-color: cyan;
+	width: 45%;
+	height: 400px;
+	border-style: groove;
+	box-shadow: 10px 10px 5px grey;
+}
+
+.foro {
+	background-color: #FFDEAD;
+	border-radius: 10px;
 }

@@ -3,7 +3,7 @@
 <div align="center"><h1> <%= @course.name %> </h1></div>
 
 <div align="center"><h2> <%= @course.descripcion %> </h2></div>
-
+<br>
 <div class="list-group">
   <h3>ACTIVIDADES</h3>
   <% @course.tasks.each do |task| %>
@@ -14,8 +14,10 @@
 <br>
 
 <div class="container" align="center">
+<% if can? :manage, Course %>
 <%= link_to 'Crear nueva actividad', new_user_course_task_path(current_user,@course) %> |
 <%= link_to 'Ver alumnos inscriptos', user_course_pupils_path(current_user,@course) %> |
 <%= link_to 'Editar información del curso', edit_user_course_path(@course) %> |
-<%= link_to 'Volver atrás', :back %>
+<% end %>
+<%= link_to 'Volver atrás', user_courses_path(current_user) %>
 </div>

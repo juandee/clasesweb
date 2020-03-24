@@ -16,19 +16,19 @@
 	<div class="container">
 		<h4> Actividades para descargar </h4>
 		<% @task.documents.each do |document| %>
-    		<li class="list-group-item list-group-item-primary"> <%= document.blob.filename %> </li>
+    		<li class="list-group-item list-group-item-primary"> <%= link_to(document.blob.filename, rails_blob_path(document, disposition: 'attachment')) %> </li>
   		<% end %>
 	</div>
 <% end %>
 <br>
 
-<div class="container">
+<div class="container foro">
 	<h4> Foro de preguntas: </h4>
 	  <div class="container">
 		<% if !@task.questions.empty? %>
 			<% @task.questions.each do |q| %>
     			<div class="question">
-    				<p> <%= q.user.name%> consulta:</p>
+    				<p><strong> <%= q.user.name%> </strong> consulta:</p>
     				<p><%= q.text %></p>
     				<div>
     				<span><%= q.created_at %></span>
@@ -39,7 +39,7 @@
     			</div>
     			<% if !q.answer.nil? %>
     				<div class="answer" align="left">
-    					<p> <%= q.answer.user.name %>:</p>
+    					<p><strong> <%= q.answer.user.name %></strong>:</p>
     					<p><%= q.answer.text %></p>
     					<div>
     						<span><%= q.answer.created_at %></span>
@@ -92,6 +92,9 @@
 <br>
 
 <div class="container" align="center">
-<%= link_to 'Editar', edit_user_course_task_path(@user,@course,@task) %> |
+<% if can? :manage, Task %>
+  <%= link_to 'Editar', edit_user_course_task_path(@user,@course,@task) %> | 
+  <%= link_to 'Eliminar tarea', user_course_task_path(@user,@course,@task), method: :delete, data: { confirm: 'Seguro que querés eliminar?' } %> |
+<% end %>
 <%= link_to 'Volver al curso', user_course_path(current_user,@course) %>
 </div>

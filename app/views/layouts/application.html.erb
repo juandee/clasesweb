@@ -27,11 +27,14 @@
           <% if can? :manage, Course %>
             <span> <%= link_to "Administrar cursos", user_courses_path(current_user) %> </span>
           <% end %>
-          <span> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </span>
+          <% if current_user.has_role? :student %>
+            <div><span> <%= link_to "Mis cursos", user_courses_path(current_user) %></span></div>
+          <% end %>
+          <div align="right"><span> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </span></div>
         </div>
       <% else %>
-        <div align="center">
-          <h2 align="center">Taller de tecnologias de produccion de Software - Ruby</h2>
+        <div>
+          <h2>Taller de tecnologias de produccion de Software - Ruby</h2>
         </div>
       <% end %>
     </nav>

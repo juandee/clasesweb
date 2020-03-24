@@ -14,9 +14,23 @@ class Ability
                 can :manage, User
                 can :manage, Course
             end
+
             if user.has_role? :teacher
-                can :manage, Course, owner: user  
+                can :manage, Course, owner: user
+                can :manage, Answer, user_id: user.id
+                can :manage, Task, user_id: user.id  
             end
+
+            if user.has_role? :student
+                can :index, Course do |course|
+                    course.pupils.include?(user)
+                end
+                can :show, Course do |course|
+                    course.pupils.include?(user)
+                end
+                can :manage, Question, user_id: user.id
+            end
+
         end
     #
     # The first argument to `can` is the action you are giving the user

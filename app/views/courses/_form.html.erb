@@ -1,3 +1,4 @@
+<div class="container form-style">
 <%= form_with(model: [@user,course], local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -10,18 +11,19 @@
       </ul>
     </div>
   <% end %>
-
+  <br>
   <div class="field">
     <%= form.label :nombre %>
     <%= form.text_field :name %>
   </div>
-
+  <br>
   <div class="field">
     <%= form.label :descripcion %>
     <%= form.text_area :descripcion %>
   </div>
-
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
