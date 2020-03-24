@@ -4,4 +4,7 @@ class Task < ApplicationRecord
 	belongs_to :course
 	belongs_to :user
 	has_many :questions, :dependent => :destroy
+	validates :titulo, presence: true
+	validates :descripcion, presence: true
+
 end

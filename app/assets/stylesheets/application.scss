@@ -64,12 +64,17 @@
 .form-style {
 	background-color: cyan;
 	width: 45%;
-	height: 400px;
+	height: auto;
 	border-style: groove;
 	box-shadow: 10px 10px 5px grey;
 }
 
 .foro {
 	background-color: #FFDEAD;
-	border-radius: 10px;
+	border-radius: 20px;
+}
+
+.actividades {
+	background-color: lightgreen;
+	border-radius: 20px;
 }

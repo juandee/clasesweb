@@ -115,3 +115,32 @@ attendant = Attendant.create(user_id: student12.id, course_id: course4.id)
 attendant = Attendant.create(user_id: student13.id, course_id: course4.id)
 attendant = Attendant.create(user_id: student14.id, course_id: course4.id)
 attendant = Attendant.create(user_id: student15.id, course_id: course4.id)
+
+#Actividades del curso 1
+task1 = Task.create(titulo:'Primera actividad', descripcion:'conceptos básicos del lenguaje.', user_id: teacher1.id, course_id: course1.id)
+#Consultas de la Actividad 1
+question1 = Question.create(text:'Tengo una duda.', task_id: task1.id, user_id: student3.id)
+question2= Question.create(text: 'Yo tengo otra duda.', task_id: task1.id, user_id: student11.id)
+question3 = Question.create(text:'Yo no entiendo nada.', task_id: task1.id, user_id: student7.id)
+#Respuestas a las consultas de la Actividad 1
+answer1 = Answer.create(text:'No te preocupes, ya vas a entender.', user_id: teacher1.id, question_id: question3.id)
+answer2 = Answer.create(text:'No es difícil, pensá.', user_id: teacher1.id, question_id: question1.id)
+
+task2 = Task.create(titulo:'Segunda actividad', descripcion:'buenas prácticas de programación.', user_id: teacher1.id, course_id: course1.id)
+task3 = Task.create(titulo:'Tercera actividad', descripcion:'actividad integradora.', user_id: teacher1.id, course_id: course1.id)
+
+#Actividades del curso 2
+task1 = Task.create(titulo:'Actividad introductoria', descripcion:'conceptos de elección de materiales.', user_id: teacher2.id, course_id: course2.id)
+task2 = Task.create(titulo:'Primeros pasos', descripcion:'realización de manualidades simples.', user_id: teacher2.id, course_id: course2.id)
+
+#Actividades del curso 3
+task1 = Task.create(titulo:'Primer acercamiento al origami', descripcion:'bases elementales del doblado del papel.', user_id: teacher2.id, course_id: course3.id)
+task2 = Task.create(titulo:'Figuras simple', descripcion:'realización de figuras simples.', user_id: teacher2.id, course_id: course3.id)
+
+#Actividades del curso 5
+task1 = Task.create(titulo:'Introducción a HTML', descripcion:'principios básicos.', user_id: teacher5.id, course_id: course5.id)
+task2 = Task.create(titulo:'Introducción a CSS', descripcion:'agregando estilo.', user_id: teacher5.id, course_id: course5.id)
+task3 = Task.create(titulo:'Trabajo integrador', descripcion:'primer trabajo para integrar conceptos.', user_id: teacher5.id, course_id: course5.id)
+
+#Consultas del curso 1
+#Actividad 1

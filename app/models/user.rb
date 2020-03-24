@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :attendants, :dependent => :destroy
   has_many :classes, :through => :attendants, :source => "course" 
   validates :name, :surname, :dni, :birthday, presence: true
-  validates :dni, numericality: { only_integer: true }
-  after_create :set_default_role
+  validates :dni, numericality: { only_integer: true }, uniqueness: true
+  #after_create :set_default_role
 
 	def has_role?(role_sym)
   	roles.any? { |r| r.name.underscore.to_sym == role_sym }
@@ -32,11 +32,9 @@ class User < ApplicationRecord
     end
   end
 
-  private
-  def set_default_role
-    if self.roles.empty?
-      assignment = Assignment.create(user_id: self.id, role_id: '3')
-    end
-  end
+  #private
+  #def set_default_role
+  #  assignment = Assignment.create(user_id: self.id, role_id: '3')
+  #end
   	
 end

@@ -13,11 +13,12 @@
 <br>
 
 <% if @task.documents.attached? %>
-	<div class="container">
+	<div class="container actividades">
 		<h4> Actividades para descargar </h4>
 		<% @task.documents.each do |document| %>
     		<li class="list-group-item list-group-item-primary"> <%= link_to(document.blob.filename, rails_blob_path(document, disposition: 'attachment')) %> </li>
   		<% end %>
+    <br>
 	</div>
 <% end %>
 <br>
@@ -56,7 +57,7 @@
     			  <% if current_user.id == @course.owner.id %>
     				<br>
     				<div class="container" align="center">
-						<p>Escribí acá la respuesta:<%= q.id %></p>
+						<p>Escribí acá la respuesta:</p>
 						<%= form_with url: user_course_task_question_answerquestion_path(@user,@course,@task,q), id: "form#{q.id}", method: :patch do |form| %>
 						  <div class="field">
     						<%= form.text_area(:answer) %>
