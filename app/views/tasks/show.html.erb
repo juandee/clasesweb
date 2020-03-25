@@ -7,7 +7,7 @@
 
 <% if @task.video.attached? %>
 	<div class="container" align="center">
-  		<%= video_tag(url_for(@task.video), style: "width:600;height:400", :controls => true) %>
+  		<%= video_tag(url_for(@task.video), size: "600x400", :controls => true) %>
 	</div>
 <% end %>
 <br>
@@ -74,6 +74,7 @@
   			<div align="center"><p>Todavía no hay ninguna pregunta para esta actividad.</p></div>
   		<% end %>
   	  </div>
+  <br>
 </div>
 <br>
 

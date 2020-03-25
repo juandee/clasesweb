@@ -118,9 +118,12 @@ attendant = Attendant.create(user_id: student15.id, course_id: course4.id)
 
 #Actividades del curso 1
 task1 = Task.create(titulo:'Primera actividad', descripcion:'conceptos básicos del lenguaje.', user_id: teacher1.id, course_id: course1.id)
+task1.video.attach(io: File.open('./files/Ruby - Introducción.mp4'), filename: 'Ruby - Introducción.mp4', content_type: 'application/mp4')
+task1.documents.attach(io: File.open('./files/Introduccion a Ruby on Rails.pdf'), filename: 'Introduccion a Ruby on Rails.pdf', content_type: 'application/pdf')
+task1.documents.attach(io: File.open('./files/Aprende a programar con Ruby.pdf'), filename: 'Aprende a programar con Ruby.pdf', content_type: 'application/pdf')
 #Consultas de la Actividad 1
 question1 = Question.create(text:'Tengo una duda.', task_id: task1.id, user_id: student3.id)
-question2= Question.create(text: 'Yo tengo otra duda.', task_id: task1.id, user_id: student11.id)
+question2 = Question.create(text: 'Yo tengo otra duda.', task_id: task1.id, user_id: student11.id)
 question3 = Question.create(text:'Yo no entiendo nada.', task_id: task1.id, user_id: student7.id)
 #Respuestas a las consultas de la Actividad 1
 answer1 = Answer.create(text:'No te preocupes, ya vas a entender.', user_id: teacher1.id, question_id: question3.id)
@@ -135,6 +138,14 @@ task2 = Task.create(titulo:'Primeros pasos', descripcion:'realización de manual
 
 #Actividades del curso 3
 task1 = Task.create(titulo:'Primer acercamiento al origami', descripcion:'bases elementales del doblado del papel.', user_id: teacher2.id, course_id: course3.id)
+task1.video.attach(io: File.open('./files/ORIGAMI - introducción nociones básicas.mp4'), filename: 'ORIGAMI - introducción nociones básicas.mp4', content_type: 'application/mp4')
+#Consultas a la actividad 1
+question1 = Question.create(text:'¿Se puede hacer con papel de calcar?', task_id: task1.id, user_id: student4.id)
+question2 = Question.create(text: 'Quiero aprender a hacer una grulla.', task_id: task1.id, user_id: student5.id)
+#Respuestas a las consultas de la Actividad 1
+answer1 = Answer.create(text:'No es recomendable.', user_id: teacher2.id, question_id: question1.id)
+answer2 = Answer.create(text:'Dentro de poco lo vamos a aprender.', user_id: teacher2.id, question_id: question2.id)
+
 task2 = Task.create(titulo:'Figuras simple', descripcion:'realización de figuras simples.', user_id: teacher2.id, course_id: course3.id)
 
 #Actividades del curso 5
