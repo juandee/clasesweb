@@ -2,47 +2,55 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @course = courses(:one)
+    @course = courses(:curso_1)
+    @user = users(:pepe)
   end
 
   test "should get index" do
-    get courses_url
+    sign_in users(:pepe)
+    get user_courses_url(@user)
     assert_response :success
   end
 
   test "should get new" do
-    get new_course_url
+    sign_in users(:pepe)
+    get new_user_course_url(@user)
     assert_response :success
   end
 
   test "should create course" do
+    sign_in users(:pepe)
     assert_difference('Course.count') do
-      post courses_url, params: { course: { descripcion: @course.descripcion, name: @course.name } }
+      post user_courses_url(@user), params: { course: { descripcion: @course.descripcion, name: @course.name } }
     end
 
-    assert_redirected_to course_url(Course.last)
+    assert_redirected_to user_course_url(@user,Course.last)
   end
 
   test "should show course" do
-    get course_url(@course)
+    sign_in users(:pepe)
+    get user_course_url(@user,@course)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_course_url(@course)
+    sign_in users(:pepe)
+    get edit_user_course_url(@user,@course)
     assert_response :success
   end
 
   test "should update course" do
-    patch course_url(@course), params: { course: { descripcion: @course.descripcion, name: @course.name } }
-    assert_redirected_to course_url(@course)
+    sign_in users(:pepe)
+    patch user_course_url(@user,@course), params: { course: { descripcion: @course.descripcion, name: @course.name } }
+    assert_redirected_to user_course_url(@user,@course)
   end
 
   test "should destroy course" do
+    sign_in users(:pepe)
     assert_difference('Course.count', -1) do
-      delete course_url(@course)
+      delete user_course_url(@user,@course)
     end
 
-    assert_redirected_to courses_url
+    assert_redirected_to user_courses_url(@user)
   end
 end
