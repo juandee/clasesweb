@@ -138,7 +138,7 @@ task2 = Task.create(titulo:'Primeros pasos', descripcion:'realización de manual
 
 #Actividades del curso 3
 task1 = Task.create(titulo:'Primer acercamiento al origami', descripcion:'bases elementales del doblado del papel.', user_id: teacher2.id, course_id: course3.id)
-task1.video.attach(io: File.open('./files/ORIGAMI - introducción nociones básicas.mp4'), filename: 'ORIGAMI - introducción nociones básicas.mp4', content_type: 'application/mp4')
+task1.video.attach(io: File.open('./files/ORIGAMI - introduccion nociones basicas.mp4'), filename: 'ORIGAMI - introduccion nociones basicas.mp4', content_type: 'application/mp4')
 #Consultas a la actividad 1
 question1 = Question.create(text:'¿Se puede hacer con papel de calcar?', task_id: task1.id, user_id: student4.id)
 question2 = Question.create(text: 'Quiero aprender a hacer una grulla.', task_id: task1.id, user_id: student5.id)
@@ -152,6 +152,3 @@ task2 = Task.create(titulo:'Figuras simple', descripcion:'realización de figura
 task1 = Task.create(titulo:'Introducción a HTML', descripcion:'principios básicos.', user_id: teacher5.id, course_id: course5.id)
 task2 = Task.create(titulo:'Introducción a CSS', descripcion:'agregando estilo.', user_id: teacher5.id, course_id: course5.id)
 task3 = Task.create(titulo:'Trabajo integrador', descripcion:'primer trabajo para integrar conceptos.', user_id: teacher5.id, course_id: course5.id)
-
-#Consultas del curso 1
-#Actividad 1
