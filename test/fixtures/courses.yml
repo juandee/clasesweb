@@ -3,24 +3,24 @@
 curso_1:
   name: Curso1
   descripcion: Es el curso 1
-  user_id: pepe.id
+  user_id: pepe
 
 curso_2:
   name: Curso2
   descripcion: Es el curso 2
-  user_id: pepe.id
+  user_id: pepe
 
 curso_3:
   name: Curso3
   descripcion: Es el curso 3
-  user_id: pepe.id
+  user_id: pepe
 
 curso_4:
   name: Curso4
   descripcion: Es el curso 4
-  user_id: marcos.id
+  user_id: marcos
 
 curso_5:
   name: Curso5
   descripcion: Es el curso 5
-  user_id: marcos.id
+  user_id: marcos

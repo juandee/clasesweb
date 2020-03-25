@@ -3,53 +3,53 @@
 actividad1:
   titulo: Actividad1
   descripcion: primera_actividad
-  user_id: pepe.id
-  course_id: curso_1.id
+  user_id: pepe
+  course_id: curso_1
 
 actividad2:
   titulo: Actividad2
   descripcion: segunda_actividad
-  user_id: pepe.id
-  course_id: curso_1.id
+  user_id: pepe
+  course_id: curso_1
 
 actividad3:
   titulo: Actividad3
   descripcion: tercera_actividad
-  user_id: pepe.id
-  course_id: curso_2.id
+  user_id: pepe
+  course_id: curso_2
 
 actividad4:
   titulo: Actividad4
   descripcion: cuarta_actividad
-  user_id: pepe.id
-  course_id: curso_2.id
+  user_id: pepe
+  course_id: curso_2
 
 actividad5:
   titulo: Actividad5
   descripcion: quinta_actividad
-  user_id: pepe.id
-  course_id: curso_3.id
+  user_id: pepe
+  course_id: curso_3
 
 actividad6:
   titulo: Actividad6
   descripcion: sexta_actividad
-  user_id: marcos.id
-  course_id: curso_4.id
+  user_id: marcos
+  course_id: curso_4
 
 actividad7:
   titulo: Actividad7
   descripcion: septima_actividad
-  user_id: marcos.id
-  course_id: curso_4.id
+  user_id: marcos
+  course_id: curso_4
 
 actividad8:
   titulo: Actividad8
   descripcion: octava_actividad
-  user_id: five.id
-  course_id: curso_4.id
+  user_id: five
+  course_id: curso_4
 
 actividad9:
   titulo: Actividad9
   descripcion: novena_actividad
-  user_id: marcos.id
-  course_id: curso_5.id
+  user_id: marcos
+  course_id: curso_5

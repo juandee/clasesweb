@@ -5,25 +5,25 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  user_id: pepe.id
-  role_id: teacher.id
+  user_id: pepe
+  role_id: teacher
 
 two:
-  user_id: martina.id
-  role_id: student.id
+  user_id: martina
+  role_id: student
 
 three:
-  user_id: abril.id
-  role_id: student.id
+  user_id: abril
+  role_id: student
 
 four:
-  user_id: florencia.id
-  role_id: student.id
+  user_id: florencia
+  role_id: student
 
 five:
-  user_id: marcos.id
-  role_id: teacher.id
+  user_id: marcos
+  role_id: teacher
 
 six:
-  user_id: admin.id
-  role_id: adminr.id
+  user_id: admin
+  role_id: adminr
