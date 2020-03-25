@@ -22,7 +22,7 @@ El proyecto modela una aplicación sencilla para el manejo de cursos online. El 
 	* Docentes.
 	* Alumnos/as.
 
-El objetivo principal es facilitar una herramiento para que los/as docentes puedan crear cursos con recursos tales como videos y documentos descargables para los/as alumnos/as.
+El objetivo principal es facilitar una herramienta para que los/as docentes puedan crear cursos con recursos tales como videos y documentos descargables para los/as alumnos/as.
 
 Para el manejo de sesiones y registro de usuarios en el sistema se utiliza la gema Devise. 
 
