@@ -1,9 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  descripcion: MyText
+curso_1:
+  name: Curso1
+  descripcion: Es el curso 1
+  user_id: pepe.id
 
-two:
-  name: MyString
-  descripcion: MyText
+curso_2:
+  name: Curso2
+  descripcion: Es el curso 2
+  user_id: pepe.id
+
+curso_3:
+  name: Curso3
+  descripcion: Es el curso 3
+  user_id: pepe.id
+
+curso_4:
+  name: Curso4
+  descripcion: Es el curso 4
+  user_id: marcos.id
+
+curso_5:
+  name: Curso5
+  descripcion: Es el curso 5
+  user_id: marcos.id

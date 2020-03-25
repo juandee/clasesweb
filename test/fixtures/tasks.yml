@@ -1,9 +1,55 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  titulo: MyString
-  descripcion: MyText
+actividad1:
+  titulo: Actividad1
+  descripcion: primera_actividad
+  user_id: pepe.id
+  course_id: curso_1.id
 
-two:
-  titulo: MyString
-  descripcion: MyText
+actividad2:
+  titulo: Actividad2
+  descripcion: segunda_actividad
+  user_id: pepe.id
+  course_id: curso_1.id
+
+actividad3:
+  titulo: Actividad3
+  descripcion: tercera_actividad
+  user_id: pepe.id
+  course_id: curso_2.id
+
+actividad4:
+  titulo: Actividad4
+  descripcion: cuarta_actividad
+  user_id: pepe.id
+  course_id: curso_2.id
+
+actividad5:
+  titulo: Actividad5
+  descripcion: quinta_actividad
+  user_id: pepe.id
+  course_id: curso_3.id
+
+actividad6:
+  titulo: Actividad6
+  descripcion: sexta_actividad
+  user_id: marcos.id
+  course_id: curso_4.id
+
+actividad7:
+  titulo: Actividad7
+  descripcion: septima_actividad
+  user_id: marcos.id
+  course_id: curso_4.id
+
+actividad8:
+  titulo: Actividad8
+  descripcion: octava_actividad
+  user_id: five.id
+  course_id: curso_4.id
+
+actividad9:
+  titulo: Actividad9
+  descripcion: novena_actividad
+  user_id: marcos.id
+  course_id: curso_5.id

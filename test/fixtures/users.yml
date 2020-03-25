@@ -1,13 +1,49 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  surname: MyString
-  dni: 1
-  birthday: 2019-08-19
+pepe:
+  name: Pepe
+  surname: Suarez
+  dni: 36156487
+  birthday: 1990-08-19
+  email: pepe@gmail.com
+  encrypted_password: pepe1234
 
-two:
-  name: MyString
-  surname: MyString
-  dni: 1
-  birthday: 2019-08-19
+martina:
+  name: Martina
+  surname: Gonzalez
+  dni: 38645312
+  birthday: 1991-06-15
+  email: martina@gmail.com
+  encrypted_password: martina1234
+
+abril:
+  name: Abril
+  surname: Gomez
+  dni: 35164986
+  birthday: 1992-07-02
+  email: abril@gmail.com
+  encrypted_password: abril1234
+
+florencia:
+  name: Florencia
+  surname: Lamarque
+  dni: 34426986
+  birthday: 1995-01-30
+  email: florencia@gmail.com
+  encrypted_password: florencia1234
+
+marcos:
+  name: Marcos
+  surname: Sierra
+  dni: 33165489
+  birthday: 1994-10-10
+  email: marcos@gmail.com
+  encrypted_password: marcos1234
+
+admin:
+  name: Admin
+  surname: Admin
+  dni: 37353181
+  birthday: 1993-02-24
+  email: admin@gmail.com
+  encrypted_password: admin1234s

@@ -2,47 +2,56 @@ require 'test_helper'
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @task = tasks(:one)
+    @task = tasks(:actividad1)
+    @user = users(:pepe)
+    @course = courses(:curso_1)
   end
 
   test "should get index" do
-    get tasks_url
+    sign_in users(:pepe)
+    get user_course_tasks_url(@user,@course)
     assert_response :success
   end
 
   test "should get new" do
-    get new_task_url
+    sign_in users(:pepe)
+    get new_user_course_task_path(@user,@course)
     assert_response :success
   end
 
   test "should create task" do
+    sign_in users(:pepe)
     assert_difference('Task.count') do
-      post tasks_url, params: { task: { descripcion: @task.descripcion, titulo: @task.titulo } }
+      post user_course_tasks_url(@user,@course), params: { task: { descripcion: @task.descripcion, titulo: @task.titulo } }
     end
 
-    assert_redirected_to task_url(Task.last)
+    assert_redirected_to user_course_task_url(@user,@course,Task.last)
   end
 
-  test "should show task" do
-    get task_url(@task)
-    assert_response :success
-  end
+  #test "should show task" do
+  #  sign_in users(:pepe)
+  #  get user_course_task_path(@user,@course,@task)
+  #  assert_response :success
+  #end
 
   test "should get edit" do
-    get edit_task_url(@task)
+    sign_in users(:pepe)
+    get edit_user_course_task_path(@user,@course,@task)
     assert_response :success
   end
 
   test "should update task" do
-    patch task_url(@task), params: { task: { descripcion: @task.descripcion, titulo: @task.titulo } }
-    assert_redirected_to task_url(@task)
+    sign_in users(:pepe)
+    patch user_course_task_url(@user,@course,@task), params: { task: { descripcion: @task.descripcion, titulo: @task.titulo } }
+    assert_redirected_to user_course_task_path(@user,@course,@task)
   end
 
   test "should destroy task" do
+    sign_in users(:pepe)
     assert_difference('Task.count', -1) do
-      delete task_url(@task)
+      delete user_course_task_url(@user,@course,@task)
     end
 
-    assert_redirected_to tasks_url
+    assert_redirected_to user_course_url(@user,@course)
   end
 end
