@@ -2,7 +2,8 @@ require "application_system_test_case"
 
 class CoursesTest < ApplicationSystemTestCase
   setup do
-    @course = courses(:one)
+    @course = courses(:curso_1)
+    @user = users(:pepe)
   end
 
   test "visiting the index" do

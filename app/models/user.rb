@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :classes, :through => :attendants, :source => "course" 
   validates :name, :surname, :dni, :birthday, presence: true
   validates :dni, numericality: { only_integer: true }, uniqueness: true
+  has_many :questions, :dependent => :destroy
+  has_many :answers, :dependent => :destroy
   #after_create :set_default_role
 
 	def has_role?(role_sym)
