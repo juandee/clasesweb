@@ -65,6 +65,8 @@ Una vez creada la base de datos hay que ejecutar `rake db:seed` para cargar los 
 ```
 Se proveen usuarios docentes, alumnos y administrador para evaluar los diferentes accesos. Además se proveen ejemplos de cursos creados, con videos y actividades adjuntas, así como consultas generadas en los foros.
 
+Aclaración: el sistema está pensado para que al momento de registrar un usuario, se le asigne por defecto el rol de estudiante. Con el fin de probar la funcionalidad de los distintos tipos de usuarios, en las seeds ya se proveen usuarios con roles asignados, por lo cual el método para la asignación por default del rol en el modelo de usuario está comentado. Si se quiere comprobar el correcto funcionamiento, una vez cargadas las seeds ir al modelo de usuario y descomentar el método privado set_default_role.
+
 ## Puesta en marcha
 
 Una vez ya instaladas las dependencias del proyecto y generada la base de datos, ya podrá poner en marcha el servidor, ejecutando:
