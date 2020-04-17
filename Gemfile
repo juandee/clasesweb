@@ -32,6 +32,7 @@ gem "rubyzip", ">= 1.3.0"
 # gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem "devise", ">= 4.7.1"
+gem 'ransack', github: 'activerecord-hackery/ransack'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'bootstrap', '~> 4.3.1'

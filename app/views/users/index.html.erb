@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
-
 <h1 align="center">TODOS LOS USUARIOS REGISTRADOS</h1>
 <br>
 <div class="search-container search">
-  <%= form_tag(users_path, method: :get) do %>
-    <%= label_tag(:search, "Buscar usuario:") %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag("Buscar") %>
+  <%= search_form_for @q, url: users_path, html: { method: :get } do |f| %>
+      <%= f.label :nombre_o_apellido_o_email_o_dni %>
+    <%= f.search_field :name_or_surname_or_email_or_dni_cont %>
+    <%= f.submit "Buscar" %>
   <% end %>
 </div>
 

@@ -4,17 +4,27 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.search(params[:search]).all_except(current_user).sort_by { |u| u.surname }
+    @q = User.ransack(params[:q])
+    @users = @q.result.all_except(current_user).sort_by { |u| u.surname }
+    if params[:q].blank?
+      @users = User.all_except(current_user).sort_by { |u| u.surname }
+    end
   end
 
   def students
-    @users = User.all_except(current_user).select { |u| u.has_role?(:student) }.sort_by { |u| u.surname }
-    render "users/students"
+    @q = User.ransack(params[:q])
+    @users = @q.result.all_except(current_user).select { |u| u.has_role?(:student) }.sort_by { |u| u.surname }
+    if params[:q].blank?
+      @users = User.all_except(current_user).select { |u| u.has_role?(:student) }.sort_by { |u| u.surname }
+    end
   end
 
   def teachers
-    @users = User.all_except(current_user).select { |u| u.has_role?(:teacher)}.sort_by { |u| u.surname }
-    render "users/teachers"
+    @q = User.ransack(params[:q])
+    @users = @q.result.all_except(current_user).select { |u| u.has_role?(:teacher)}.sort_by { |u| u.surname }
+    if params[:q].blank?
+      @users = User.all_except(current_user).select { |u| u.has_role?(:teacher)}.sort_by { |u| u.surname }
+    end
   end
 
   # GET /students
@@ -82,6 +92,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :surname, :dni, :birthday, :email, :password, :search, role_ids: [])
+      params.require(:user).permit(:name, :surname, :dni, :birthday, :email, :password, role_ids: [])
     end
 end
