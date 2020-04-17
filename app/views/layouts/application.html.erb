@@ -30,6 +30,7 @@
           <% if current_user.has_role? :student %>
             <div><span> <%= link_to "Mis cursos", user_courses_path(current_user) %></span></div>
           <% end %>
+          <div><span> <%= link_to "Mi perfil", current_user %> </span></div>
           <div align="right"><span> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </span></div>
         </div>
       <% else %>
