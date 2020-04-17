@@ -32,5 +32,9 @@
 </p>
 
 <%= link_to 'Editar', edit_user_path(@user) %> |
-<%= link_to 'Atrás', users_path %>
+<% if can? :manage, User %>
+	<%= link_to 'Atrás', users_path %>
+<% else %>
+	<%= link_to 'Atrás', root_path %>
+<% end %>
 </div>

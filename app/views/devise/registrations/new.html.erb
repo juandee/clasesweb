@@ -5,12 +5,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :nombre %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "Nombre del usuario" %>
   </div>
 
   <div class="field">
-    <%= f.label :surname %><br />
+    <%= f.label :apellido %><br />
     <%= f.text_field :surname, autofocus: true, autocomplete: "Apellido del usuario" %>
   </div>
 
@@ -20,7 +20,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :birthday %><br />
+    <%= f.label :fecha_de_nacimiento %><br />
     <%= f.date_field :birthday, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -30,7 +30,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :contraseña %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -38,12 +38,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :confirmar_contraseña %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrarse" %>
   </div>
 <% end %>
 </div>
