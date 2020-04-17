@@ -2,7 +2,8 @@
 
 <%= render 'form', user: @user %>
 <br>
-<div class="container" align="center"><%= link_to 'Mostrar', @user %> | <%= link_to 'Atras', @user %> 
+<div class="container" align="center"><%= link_to 'Mostrar', @user %>
 	<% if @user.id == current_user.id %>| <%= link_to "Cambiar contraseña", edit_user_registration_path %>
 	<% end %>
+	| <%= link_to 'Atras', @user %> 
  </div>

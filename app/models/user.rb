@@ -13,25 +13,16 @@ class User < ApplicationRecord
   has_many :answers, :dependent => :destroy
   #after_create :set_default_role
 
+  ransacker :dni do
+    Arel.sql("CAST(#{table_name}.dni AS STRING)")
+  end
+
 	def has_role?(role_sym)
   	roles.any? { |r| r.name.underscore.to_sym == role_sym }
 	end
 
 	def self.all_except(user)
     where.not(id: user)
-  end
-
-  def self.search(search)
-    if search
-      users = User.where('name LIKE :search OR surname LIKE :search OR email LIKE :search OR dni LIKE :search', search: "%#{search}%")
-      if users 
-        self.where('name LIKE :search OR surname LIKE :search OR email LIKE :search OR dni LIKE :search', search: "%#{search}%")
-      else
-        User.all
-      end
-    else
-      User.all
-    end
   end
 
   #private
