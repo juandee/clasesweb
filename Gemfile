@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 gem "rack", ">= 2.0.8"
+gem 'kaminari'
 gem "nokogiri", ">= 1.10.8"
 gem "loofah", ">= 2.3.1"
 gem "rubyzip", ">= 1.3.0"

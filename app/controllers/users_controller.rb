@@ -5,25 +5,29 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result.all_except(current_user).sort_by { |u| u.surname }
+    @users = @q.result.all_except(current_user).order(:surname).page params[:page]
     if params[:q].blank?
-      @users = User.all_except(current_user).sort_by { |u| u.surname }
+      @users = User.all_except(current_user).order(:surname).page params[:page]
     end
   end
 
   def students
     @q = User.ransack(params[:q])
-    @users = @q.result.all_except(current_user).select { |u| u.has_role?(:student) }.sort_by { |u| u.surname }
+    @u = @q.result.all_except(current_user).students
+    @users = Kaminari.paginate_array(@u).page(params[:page]).per(5)
     if params[:q].blank?
-      @users = User.all_except(current_user).select { |u| u.has_role?(:student) }.sort_by { |u| u.surname }
+      @u = User.all_except(current_user).students
+      @users = Kaminari.paginate_array(@u).page(params[:page]).per(5)
     end
   end
 
   def teachers
     @q = User.ransack(params[:q])
-    @users = @q.result.all_except(current_user).select { |u| u.has_role?(:teacher)}.sort_by { |u| u.surname }
+    @u = @q.result.all_except(current_user).teachers
+    @users = Kaminari.paginate_array(@u).page(params[:page]).per(5)
     if params[:q].blank?
-      @users = User.all_except(current_user).select { |u| u.has_role?(:teacher)}.sort_by { |u| u.surname }
+      @u = User.all_except(current_user).teachers
+      @users = Kaminari.paginate_array(@u).page(params[:page]).per(5)
     end
   end
 
