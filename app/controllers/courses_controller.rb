@@ -24,7 +24,8 @@ class CoursesController < ApplicationController
 
   def pupils
     @course = Course.find(params[:course_id])
-    @pupils = @course.pupils.sort_by { |p| p.surname }
+    @p = @course.pupils.sort_by { |p| p.surname }
+    @pupils = Kaminari.paginate_array(@p).page(params[:page]).per(5)
     if @pupils.empty?
       flash.now[:alert] = "Aún no hay alumnos inscriptos a este curso."
     else
