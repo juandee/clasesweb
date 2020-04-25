@@ -20,8 +20,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.new
     @answer.text = params[:answer]
-    @answer.question_id = @question.id
     @answer.user_id = @user.id
+    @answer.question_id = @question.id
     @question.answer = @answer
     if @question.save
       respond_to do |format|

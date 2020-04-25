@@ -5,6 +5,7 @@ class Course < ApplicationRecord
 	has_many :tasks, :dependent => :destroy
 	validates :name, presence: true
 	validates :descripcion, presence: true
+	paginates_per 5
 
 	def set_owner(user)
 		self.owner = user

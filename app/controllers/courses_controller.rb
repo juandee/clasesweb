@@ -3,7 +3,11 @@ class CoursesController < ApplicationController
   before_action :set_user
  
   def index
-    @courses = Course.all
+    @q = Course.ransack(params[:q])
+    @courses = @q.result.order(:name).page params[:page]
+    if params[:q].blank?
+      @courses = Course.all.order(:name).page params[:page]
+    end
   end
 
   def show
