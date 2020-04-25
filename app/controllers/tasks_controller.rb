@@ -27,8 +27,8 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-    @task.course_id = @course.id
-    @task.user_id = @user.id
+    #@task.course_id = @course.id
+    #@task.user_id = @user.id
 
     respond_to do |format|
       if @task.save

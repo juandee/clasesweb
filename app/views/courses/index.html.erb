@@ -2,6 +2,14 @@
 
 <h1 align="center">CURSOS</h1>
 <br>
+<div class="search-container search">
+  <%= search_form_for @q, url: user_courses_path, html: { method: :get } do |f| %>
+      <%= f.label :nombre_o_descripción %>
+    <%= f.search_field :name_or_descripcion_cont %>
+    <%= f.submit "Buscar" %>
+  <% end %>
+</div>
+<br>
 <table class="table table-bordered style">
   <thead>
     <tr>
@@ -27,7 +35,10 @@
     <% end %>
   </tbody>
 </table>
-
+<br>
+<div class="container pagination justify-content-center" >
+  <%= paginate @courses %>
+</div>
 <br>
 <% if can? :manage, Course %>
 <div align="center"><%= link_to 'Crear un nuevo curso', new_user_course_path(current_user) %></div>
