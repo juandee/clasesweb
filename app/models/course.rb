@@ -10,5 +10,4 @@ class Course < ApplicationRecord
 	def set_owner(user)
 		self.owner = user
 	end
-
 end
