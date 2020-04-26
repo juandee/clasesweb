@@ -9,6 +9,14 @@
 <% end %>
 
 <br>
+<div class="search-container search">
+  <%= search_form_for @q, url: user_course_addpupils_path, html: { method: :get } do |f| %>
+      <%= f.label :nombre_o_apellido_o_email_o_dni %>
+    <%= f.search_field :name_or_surname_or_email_or_dni_cont %>
+    <%= f.submit "Buscar" %>
+  <% end %>
+</div>
+<br>
 
 <%= form_tag user_course_updatepupils_path, method: :patch %>
 <table class="table table-bordered style">
@@ -39,6 +47,10 @@
   </tbody>
 </table>
 
+<br>
+<div class="container pagination justify-content-center" >
+  <%= paginate @pupils %>
+</div>
 <br>
 
 <div align="center">

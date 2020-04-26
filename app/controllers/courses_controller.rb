@@ -24,28 +24,35 @@ class CoursesController < ApplicationController
 
   def pupils
     @course = Course.find(params[:course_id])
-    @p = @course.pupils.sort_by { |p| p.surname }
+    @q = @course.pupils.ransack(params[:q])
+    @p = @q.result.sort_by { |p| p.surname }
     @pupils = Kaminari.paginate_array(@p).page(params[:page]).per(5)
-    if @pupils.empty?
-      flash.now[:alert] = "Aún no hay alumnos inscriptos a este curso."
-    else
-      @pupils
+    if params[:q].blank?
+      @p = @course.pupils.sort_by { |p| p.surname }
+      @pupils = Kaminari.paginate_array(@p).page(params[:page]).per(5)
+      if @pupils.empty?
+        flash.now[:alert] = "Aún no hay alumnos inscriptos a este curso."
+      else
+        @pupils
+      end
     end
   end
 
   def addpupils
     @course = Course.find(params[:course_id])
-    all = User.all
-    @pupils = []
-    all.each do |p|
-      if p.has_role?(:student) && !@course.pupils.include?(p)
-        @pupils << p
+    @q = User.ransack(params[:q])
+    if params[:q].blank?
+      @p = @course.not_signedup
+      @pupils = Kaminari.paginate_array(@p).page(params[:page]).per(5)
+      if @pupils.empty?
+        flash.now[:alert] = "No hay alumnos disponibles para agregar al curso."
+      else
+        @pupils
       end
-    end
-    if @pupils.empty?
-      flash.now[:alert] = "No hay alumnos disponibles para agregar al curso."
     else
-      @pupils = @pupils.sort_by { |p| p.surname }
+      @p = @q.result
+      @result = @course.check_condition(@p)
+      @pupils = Kaminari.paginate_array(@result).page(params[:page]).per(5)
     end
   end
 
