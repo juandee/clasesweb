@@ -49,9 +49,11 @@
 <br>
 
 <div align="center">
-  <%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
-    Eliminar
-  <%end%> |
+  <% if !@pupils.empty? %>
+    <%= content_tag :button, :type => :submit, class: 'btn btn-success' do %>
+      Eliminar
+    <%end%> |
+  <% end %>
   <%= link_to 'Agregar alumnos al curso', user_course_addpupils_path(current_user,@course) %> |
   <%= link_to 'Atrás', user_course_path(current_user,@course) %>
 </div>
