@@ -58,35 +58,33 @@ class CoursesController < ApplicationController
 
   def updatepupils
     @course = Course.find(params[:course_id])
-    pupils = params[:selected_pupils]
-    if !pupils.nil?
-      pupils.each do |p| @course.pupils << User.where(id: p) end
-      respond_to do |format|
-        format.html { redirect_to user_course_pupils_path(@user,@course), notice: 'Se agregaron correctamente los alumnos al curso' }
-        format.json { render :pupils, status: :ok, location: @course }
-      end
-    else
+    if params[:selected_pupils].blank?
       respond_to do |format|
         format.html { redirect_to user_course_addpupils_path(@user,@course), alert: "No seleccionaste ningún alumno." }
         format.json { render :pupils, status: :ok, location: @course }
       end
+    else
+      @course.add_pupils(params[:selected_pupils])
+      respond_to do |format|
+        format.html { redirect_to user_course_pupils_path(@user,@course), notice: 'Se agregaron correctamente los alumnos al curso' }
+        format.json { render :pupils, status: :ok, location: @course }
+      end   
     end
   end
 
   def deletepupils
     @course = Course.find(params[:course_id])
-    pupils = params[:selected_pupils]
-    if !pupils.nil?
-      pupils.each do |p| @course.pupils.delete(p) end
-      respond_to do |format|
-        format.html { redirect_to user_course_pupils_path(@user,@course), notice: 'Se eliminaron correctamente los alumnos del curso' }
-        format.json { render :pupils, status: :ok, location: @course }
-      end
-    else
+    if params[:selected_pupils].blank?
       respond_to do |format|
         format.html { redirect_to user_course_pupils_path(@user,@course), alert: "No seleccionaste ningún alumno." }
         format.json { render :pupils, status: :ok, location: @course }
-      end  
+      end
+    else
+      @course.delete_pupils(params[:selected_pupils])
+      respond_to do |format|
+        format.html { redirect_to user_course_pupils_path(@user,@course), notice: 'Se eliminaron correctamente los alumnos del curso' }
+        format.json { render :pupils, status: :ok, location: @course }
+      end    
     end
   end
 
