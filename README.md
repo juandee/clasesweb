@@ -13,6 +13,8 @@
 	* Devise
 	* CanCanCan
 	* Active Storage
+	* Ransack
+	* Kaminari
 
 ## Información general
 
@@ -33,6 +35,10 @@ El usuario con rol docente puede crear cursos, así como crear actividades y car
 Por último, el usuario administrador tiene acceso total a toda la aplicación. Si bien no debería intervenir, tiene la capacidad para manejar todos los cursos y usuarios registrados en el sistema.
 
 Las autorizaciones para cada tipo de usuario se realizaron utilizando la gema CanCanCan.
+
+Para facilitar el manejo de listados de usuarios, alumnos, docentes y cursos, se proveen buscadores, haciendo uso de la gema Ransack.
+
+Por otro lado, para organizar la cantidad de información que se muestra por página, se utiliza Kaminari como paginador.
 
 
 ## Configuración del sistema
