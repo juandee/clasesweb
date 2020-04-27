@@ -26,9 +26,8 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
-    #@task.course_id = @course.id
-    #@task.user_id = @user.id
+    @task = @course.tasks.new(task_params)
+    @task.user_id = @user.id
 
     respond_to do |format|
       if @task.save
@@ -67,10 +66,7 @@ class TasksController < ApplicationController
 
   def makequestion
     @task = Task.find(params[:task_id])
-    @question = @task.questions.new
-    @question.text = params[:text_question]
-    @question.task_id = @task.id
-    @question.user_id = @user.id
+    @question = @task.new_question(params[:text_question],@user)
     if @question.save
       respond_to do |format|
         format.html { redirect_to user_course_task_path(@user,@course,@task), notice: 'Ya se generó tu consulta.' }
@@ -93,6 +89,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:titulo, :descripcion, :course_id, :user_id, :video, documents: [])
+      params.require(:task).permit(:titulo, :descripcion, :user_id, :course_id, :video, documents: [])
     end
 end

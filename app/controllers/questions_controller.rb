@@ -18,12 +18,8 @@ class QuestionsController < ApplicationController
 
   def answerquestion
     @question = Question.find(params[:question_id])
-    @answer = Answer.new
-    @answer.text = params[:answer]
-    @answer.user_id = @user.id
-    @answer.question_id = @question.id
-    @question.answer = @answer
-    if @question.save
+    @answer = @question.new_answer(params[:answer],@user)
+    if @answer.save
       respond_to do |format|
         format.html { redirect_to user_course_task_path(@user,@course,@task), notice: 'Se guardó tu respuesta.' }
         format.json { render :task, status: :ok, location: @task }
