@@ -2,9 +2,9 @@ require 'test_helper'
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @task = tasks(:actividad1)
     @user = users(:pepe)
     @course = courses(:curso_1)
+    @task = tasks(:actividad1)
   end
 
   test "should get index" do
@@ -42,7 +42,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
   test "should update task" do
     sign_in users(:pepe)
-    patch user_course_task_url(@user,@course,@task), params: { task: { descripcion: @task.descripcion, titulo: @task.titulo } }
+    patch user_course_task_path(@user,@course,@task), params: { task: { descripcion: @task.descripcion, titulo: @task.titulo } }
     assert_redirected_to user_course_task_path(@user,@course,@task)
   end
 

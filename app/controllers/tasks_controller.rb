@@ -48,6 +48,7 @@ class TasksController < ApplicationController
         format.html { redirect_to user_course_task_path(@user,@course,@task), notice: 'La actividad se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: @task }
       else
+        puts @task.errors.full_message
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
