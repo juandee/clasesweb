@@ -41,5 +41,10 @@ class UserTest < ActiveSupport::TestCase
   	assert users(:martina).has_role?(:student)
   	assert_not users(:martina).has_role?(:teacher)
   end
-
+  
+  test "user_dni_should_be_unique" do
+    @user = users(:pepe)
+    @user.dni = users(:martina).dni
+    assert_not @user.save
+  end
 end

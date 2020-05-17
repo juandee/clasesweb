@@ -4,8 +4,21 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  task: actividad1
+  user: martina
+two:
+  task: actividad1
+  user: florencia
+
+three:
+  task: actividad2
+  user: abril
+
+four:
+  task: actividad2
+  user: martina
+
+five:
+  task: actividad3
+  user: florencia
