@@ -37,4 +37,24 @@ class CourseTest < ActiveSupport::TestCase
   	@course2 = courses(:curso_2)
   	assert_not @course2.pupils.any?
   end
+
+  test "course_has_taks" do
+  	@course = courses(:curso_1)
+  	assert @course.tasks.any?
+  	@course2 = courses(:curso_5)
+  	assert_not @course2.tasks.any?
+  end
+
+  test "task_belongs_to_course" do
+  	@course = courses(:curso_1)
+  	assert @course.tasks.include?(tasks(:actividad1))
+  	assert @course.tasks.include?(tasks(:actividad2))
+  	assert_not @course.tasks.include?(tasks(:actividad3))
+  end
+
+  test "pupil_belongs_to_course" do
+  	@course = courses(:curso_1)
+  	assert @course.pupils.include?(users(:martina))
+  	assert @course.pupils.include?(users(:abril))
+  end
 end

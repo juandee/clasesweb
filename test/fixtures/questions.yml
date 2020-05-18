@@ -5,20 +5,25 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  text: "¿Cómo se resuelve la actividad?"
   task: actividad1
   user: martina
 two:
+  text: "¿Alguien entiende?"
   task: actividad1
   user: florencia
 
 three:
+  text: "Tengo una duda."
   task: actividad2
   user: abril
 
 four:
+  text: "No me quedó claro."
   task: actividad2
   user: martina
 
 five:
+  text: "Es obligatoria la tarea?"
   task: actividad3
   user: florencia
